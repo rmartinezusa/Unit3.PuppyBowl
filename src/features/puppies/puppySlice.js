@@ -22,7 +22,7 @@ const puppyApi = api.injectEndpoints({
       providesTags: ["Player"],
     }),
     getPuppy: build.query({
-      query: (id) => "players/" + id,
+      query: (id) => (id ? `players/${id}` : "players"),
       transformResponse: (response) => response.data.player,
       providesTags: ["Player"],
     }),
