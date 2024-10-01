@@ -24,10 +24,7 @@ export default function App() {
       <PuppyForm />
       <main>
         <PuppyList setSelectedPuppyId={setSelectedPuppyId} />
-        <PuppyDetails
-          selectedPuppyId={selectedPuppyId}
-          setSelectedPuppyId={setSelectedPuppyId}
-        />
+        <PuppyDetails selectedPuppyId={selectedPuppyId} setSelectedPuppyId={setSelectedPuppyId} />
       </main>
     </Provider>
   );
