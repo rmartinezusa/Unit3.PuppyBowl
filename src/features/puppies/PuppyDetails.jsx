@@ -6,14 +6,19 @@ import { useGetPuppyQuery, useDeletePuppyMutation } from "./puppySlice"
  */
 export default function PuppyDetails({ selectedPuppyId, setSelectedPuppyId }) {
   // TODO: Grab data from the `getPuppy` query
-  const { data: puppy, isLoading, isError } = useGetPuppyQuery(selectedPuppyId);
+  //const { data: puppy, isLoading, isError } = useGetPuppyQuery(selectedPuppyId);
+
+  // Use the skip option to prevent fetching if selectedPuppyId is empty
+  // This is TRASH!!!!!!!
+  const { data: puppy, isLoading, isError } = useGetPuppyQuery(selectedPuppyId, { skip: !selectedPuppyId, });
+
 
   // TODO: Use the `deletePuppy` mutation to remove a puppy when the button is clicked
   const [deletePuppy] = useDeletePuppyMutation();
 
   async function removePuppy(id) {
     try {
-      await deletePuppy(id).unwrap();
+      await deletePuppy(id);
       setSelectedPuppyId(null); 
     } catch (error) {
       console.error("Failed to delete the puppy: ", error);
